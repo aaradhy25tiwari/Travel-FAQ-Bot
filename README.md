@@ -18,6 +18,16 @@ pip install -r requirements.txt
 git clone https://github.com/aaradhy25tiwari/Titanic-Dataset-Chat-Agent.git
 ```
 
+- To run the code
+
+```bash
+python app.py
+```
+
+```bash
+git clone https://github.com/aaradhy25tiwari/Titanic-Dataset-Chat-Agent.git
+```
+
 ## Interface
 
 Introduction Page
