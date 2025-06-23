@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelPal - Your Travel Assistant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .container { width: 100%; max-width: 1200px; height: 90vh; background: rgba(255, 255, 255, 0.95); border-radius: 20px; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); overflow: hidden; position: relative; display: flex; }
+        .welcome-section { flex: 1; background: linear-gradient(rgba(26, 42, 108, 0.8), rgba(26, 42, 108, 0.9)), url('https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; color: white; padding: 40px; display: flex; flex-direction: column; justify-content: center; text-align: center; }
+        .welcome-section h1 { font-size: 3.5rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+        .welcome-section p { font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .auth-options { flex: 1; padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .auth-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); text-align: center; max-width: 400px; width: 100%; }
+        .auth-card h2 { color: #1a2a6c; margin-bottom: 30px; font-size: 2rem; }
+        .auth-buttons { display: flex; flex-direction: column; gap: 15px; width: 100%; }
+        .auth-btn { padding: 15px; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; border: none; text-decoration: none; display: block; text-align: center; }
+        .login-btn { background: #1a2a6c; color: white; }
+        .signup-btn { background: #f8f9fa; color: #1a2a6c; border: 2px solid #1a2a6c; }
+        .auth-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
+        .auth-btn:active { transform: translateY(0); }
+        @media (max-width: 900px) {
+            .container { flex-direction: column; height: auto; }
+            .welcome-section { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="welcome-section">
+            <h1>TravelPal</h1>
+            <p>Your personal travel assistant. Get answers to all your travel-related questions instantly, in your preferred language.</p>
+            <p>Sign up now to start your journey!</p>
+        </div>
+        <div class="auth-options">
+            <div class="auth-card">
+                <h2>Welcome Traveler</h2>
+                <div class="auth-buttons">
+                    <a href="{{ url_for('login') }}" class="auth-btn login-btn">Login</a>
+                    <a href="{{ url_for('signup') }}" class="auth-btn signup-btn">Create Account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

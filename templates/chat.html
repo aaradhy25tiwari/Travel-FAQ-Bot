@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelPal Chatbot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d); min-height: 100vh; padding: 20px; }
+        .navbar { background: rgba(255, 255, 255, 0.9); border-radius: 15px; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo h1 { color: #1a2a6c; font-size: 1.8rem; }
+        .logo i { color: #1a2a6c; font-size: 1.5rem; }
+        .user-info { display: flex; align-items: center; gap: 15px; }
+        .user-info span { font-weight: 600; color: #333; }
+        .logout-btn { background: #1a2a6c; color: white; border: none; border-radius: 8px; padding: 8px 15px; cursor: pointer; font-weight: 600; transition: background 0.3s; }
+        .logout-btn:hover { background: #0d1a4d; }
+        .chat-container { display: flex; gap: 20px; height: calc(100vh - 120px); }
+        .chat-sidebar { width: 250px; background: rgba(255, 255, 255, 0.9); border-radius: 15px; padding: 20px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+        .chat-main { flex: 1; background: rgba(255, 255, 255, 0.9); border-radius: 15px; padding: 20px; display: flex; flex-direction: column; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); position: relative; background-image: url('https://images.unsplash.com/photo-1501555088652-021faa106b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; }
+        .chatbot-logo { position: absolute; bottom: 30px; left: 30px; width: 70px; height: 70px; background: #1a2a6c; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); transition: transform 0.3s; z-index: 100; }
+        .chatbot-logo:hover { transform: scale(1.1); }
+        .chatbot-logo i { font-size: 30px; color: white; }
+        .chat-interface { position: absolute; bottom: 120px; left: 30px; width: 400px; height: 500px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); display: flex; flex-direction: column; overflow: hidden; transform: scale(0); transform-origin: bottom left; transition: transform 0.3s ease; z-index: 99; }
+        .chat-interface.active { transform: scale(1); }
+        .chat-header { background: #1a2a6c; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .chat-header h3 { font-weight: 600; }
+        .close-chat { background: none; border: none; color: white; font-size: 20px; cursor: pointer; }
+        .chat-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; }
+        .message { max-width: 80%; padding: 12px 16px; margin-bottom: 15px; border-radius: 18px; position: relative; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .bot-message { background: #f1f1f1; align-self: flex-start; border-bottom-left-radius: 5px; }
+        .user-message { background: #1a2a6c; color: white; align-self: flex-end; border-bottom-right-radius: 5px; }
+        .options-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+        .option-btn { background: #e9ecef; border: none; border-radius: 20px; padding: 8px 15px; cursor: pointer; transition: background 0.3s; }
+        .option-btn:hover { background: #d8e2dc; }
+        .faq-container { margin-top: 15px; width: 100%; }
+        .faq-item { border: 1px solid #ddd; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+        .faq-question { padding: 12px 15px; background: #f8f9fa; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 500; }
+        .faq-answer { padding: 15px; background: white; display: none; line-height: 1.6; }
+        .faq-item.active .faq-answer { display: block; animation: slideDown 0.3s ease; }
+        @keyframes slideDown { from { opacity: 0; max-height: 0; } to { opacity: 1; max-height: 300px; } }
+        .nav-buttons { display: flex; justify-content: space-between; padding: 15px; background: #f8f9fa; border-top: 1px solid #eee; }
+        .nav-btn { padding: 10px 20px; border: none; border-radius: 20px; cursor: pointer; font-weight: 600; transition: all 0.3s; }
+        .menu-btn { background: #6c757d; color: white; }
+        .end-btn { background: #dc3545; color: white; }
+        .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .chat-input { display: none; padding: 15px; background: #f8f9fa; border-top: 1px solid #eee; }
+        .chat-input input { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 20px; font-size: 1rem; }
+        .chat-input input:focus { outline: none; border-color: #1a2a6c; }
+        .sidebar-section { margin-bottom: 30px; }
+        .sidebar-section h3 { color: #1a2a6c; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #eee; }
+        .category-list { list-style: none; }
+        .category-item { padding: 10px 15px; border-radius: 8px; margin-bottom: 10px; cursor: pointer; transition: background 0.3s; }
+        .category-item:hover { background: #e9ecef; }
+        .category-item.active { background: #1a2a6c; color: white; }
+        @media (max-width: 900px) {
+            .chat-container { flex-direction: column; }
+            .chat-sidebar { width: 100%; }
+            .chat-interface { width: 90%; left: 5%; bottom: 100px; height: 400px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <i class="fas fa-plane"></i>
+            <h1>TravelPal</h1>
+        </div>
+        <div class="user-info">
+            <span>Welcome, {{ username }}</span>
+            <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+        </div>
+    </div>
+    
+    <div class="chat-container">
+        <div class="chat-sidebar">
+            <div class="sidebar-section">
+                <h3>Travel Categories</h3>
+                <ul class="category-list">
+                    <li class="category-item">Flights</li>
+                    <li class="category-item">Hotels</li>
+                    <li class="category-item">Visas</li>
+                    <li class="category-item">Tour Packages</li>
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <h3>Recent Chats</h3>
+                <p>No recent chats</p>
+            </div>
+            <div class="sidebar-section">
+                <h3>Help & Support</h3>
+                <p>Contact us: support@travelpal.com</p>
+            </div>
+        </div>
+        
+        <div class="chat-main">
+            <div class="chatbot-logo" id="chatbot-logo">
+                <i class="fas fa-robot"></i>
+            </div>
+            
+            <div class="chat-interface" id="chat-interface">
+                <div class="chat-header">
+                    <h3>TravelPal Assistant</h3>
+                    <button class="close-chat" id="close-chat">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="chat-messages" id="chat-messages">
+                    <!-- Messages will be added here dynamically -->
+                </div>
+                
+                <div class="chat-input" id="chat-input">
+                    <input type="text" id="user-input" placeholder="Type your message...">
+                </div>
+                
+                <div class="nav-buttons" id="nav-buttons" style="display: none;">
+                    <button class="nav-btn menu-btn" id="back-to-menu">
+                        <i class="fas fa-arrow-left"></i> Main Menu
+                    </button>
+                    <button class="nav-btn end-btn" id="end-chat">
+                        End Chat <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const chatbotLogo = document.getElementById('chatbot-logo');
+        const chatInterface = document.getElementById('chat-interface');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const userInput = document.getElementById('user-input');
+        const closeChat = document.getElementById('close-chat');
+        const navButtons = document.getElementById('nav-buttons');
+        const backToMenu = document.getElementById('back-to-menu');
+        const endChatBtn = document.getElementById('end-chat');
+        
+        // State variables
+        let chatState = {
+            language: null,
+            name: null,
+            currentCategory: null
+        };
+        
+        // Chatbot Functionality
+        chatbotLogo.addEventListener('click', () => {
+            chatInterface.classList.add('active');
+            startChat();
+        });
+        
+        closeChat.addEventListener('click', () => {
+            chatInterface.classList.remove('active');
+        });
+        
+        function startChat() {
+            chatMessages.innerHTML = '';
+            chatState = { language: null, name: null, currentCategory: null };
+            
+            // Initial bot message
+            addBotMessage("Welcome to TravelPal! Please select your preferred language:");
+            
+            // Language options
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options-container';
+            
+            const englishBtn = document.createElement('button');
+            englishBtn.className = 'option-btn';
+            englishBtn.textContent = 'English';
+            englishBtn.addEventListener('click', () => selectLanguage('en'));
+            
+            const hindiBtn = document.createElement('button');
+            hindiBtn.className = 'option-btn';
+            hindiBtn.textContent = 'हिंदी (Hindi)';
+            hindiBtn.addEventListener('click', () => selectLanguage('hi'));
+            
+            optionsDiv.appendChild(englishBtn);
+            optionsDiv.appendChild(hindiBtn);
+            
+            chatMessages.appendChild(optionsDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function selectLanguage(lang) {
+            chatState.language = lang;
+            
+            // Remove options
+            const optionsDiv = document.querySelector('.options-container');
+            if(optionsDiv) optionsDiv.remove();
+            
+            // Ask for name
+            if(lang === 'hi') {
+                addBotMessage("आपका नाम क्या है?");
+            } else {
+                addBotMessage("What's your name?");
+            }
+            
+            // Show input field
+            chatInput.style.display = 'block';
+            userInput.focus();
+            
+            // Handle name input
+            userInput.onkeypress = (e) => {
+                if(e.key === 'Enter') {
+                    const name = userInput.value.trim();
+                    if(name) {
+                        chatState.name = name;
+                        userInput.value = '';
+                        chatInput.style.display = 'none';
+                        greetUser();
+                    }
+                }
+            };
+        }
+        
+        function greetUser() {
+            const lang = chatState.language;
+            const name = chatState.name;
+            
+            if(lang === 'hi') {
+                addBotMessage(`नमस्ते ${name}! मैं आपकी यात्रा से संबंधित प्रश्नों में मदद कर सकता हूँ। कृपया एक श्रेणी चुनें:`);
+            } else {
+                addBotMessage(`Hello ${name}! I can help you with your travel-related questions. Please select a category:`);
+            }
+            
+            showCategories();
+        }
+        
+        function showCategories() {
+            const lang = chatState.language;
+            const categories = {
+                en: {
+                    flights: "Flights",
+                    hotels: "Hotels",
+                    visas: "Visas",
+                    packages: "Tour Packages"
+                },
+                hi: {
+                    flights: "उड़ानें",
+                    hotels: "होटल",
+                    visas: "वीजा",
+                    packages: "टूर पैकेज"
+                }
+            };
+            
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options-container';
+            
+            for(const [key, text] of Object.entries(categories[lang])) {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = text;
+                btn.addEventListener('click', () => showCategoryFAQ(key));
+                optionsDiv.appendChild(btn);
+            }
+            
+            // Add End Chat button
+            const endBtn = document.createElement('button');
+            endBtn.className = 'option-btn';
+            endBtn.style.background = '#dc3545';
+            endBtn.style.color = 'white';
+            endBtn.textContent = lang === 'hi' ? "चैट समाप्त करें" : "End Chat";
+            endBtn.addEventListener('click', endChat);
+            optionsDiv.appendChild(endBtn);
+            
+            chatMessages.appendChild(optionsDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function showCategoryFAQ(category) {
+            chatState.currentCategory = category;
+            const lang = chatState.language;
+            
+            // Fetch FAQs from server
+            fetch('/get_faqs', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    category: category,
+                    language: lang
+                })
+            })
+            .then(response => response.json())
+            .then(faqs => {
+                // Remove options
+                const optionsDiv = document.querySelector('.options-container');
+                if(optionsDiv) optionsDiv.remove();
+                
+                // Show category title
+                const categoryTitles = {
+                    en: {
+                        flights: "Frequently Asked Questions about Flights",
+                        hotels: "Frequently Asked Questions about Hotels",
+                        visas: "Frequently Asked Questions about Visas",
+                        packages: "Frequently Asked Questions about Tour Packages"
+                    },
+                    hi: {
+                        flights: "उड़ानों के बारे में अक्सर पूछे जाने वाले प्रश्न",
+                        hotels: "होटलों के बारे में अक्सर पूछे जाने वाले प्रश्न",
+                        visas: "वीजा के बारे में अक्सर पूछे जाने वाले प्रश्न",
+                        packages: "टूर पैकेजों के बारे में अक्सर पूछे जाने वाले प्रश्न"
+                    }
+                };
+                
+                addBotMessage(categoryTitles[lang][category]);
+                
+                // Create FAQ container
+                const faqContainer = document.createElement('div');
+                faqContainer.className = 'faq-container';
+                
+                // Add each FAQ
+                faqs.forEach((faq, index) => {
+                    const faqItem = document.createElement('div');
+                    faqItem.className = 'faq-item';
+                    
+                    const faqQuestion = document.createElement('div');
+                    faqQuestion.className = 'faq-question';
+                    faqQuestion.textContent = faq.question;
+                    faqQuestion.innerHTML += '<i class="fas fa-chevron-down"></i>';
+                    
+                    const faqAnswer = document.createElement('div');
+                    faqAnswer.className = 'faq-answer';
+                    faqAnswer.textContent = faq.answer;
+                    
+                    faqQuestion.addEventListener('click', () => {
+                        faqItem.classList.toggle('active');
+                        const icon = faqQuestion.querySelector('i');
+                        if(faqItem.classList.contains('active')) {
+                            icon.className = 'fas fa-chevron-up';
+                        } else {
+                            icon.className = 'fas fa-chevron-down';
+                        }
+                    });
+                    
+                    faqItem.appendChild(faqQuestion);
+                    faqItem.appendChild(faqAnswer);
+                    faqContainer.appendChild(faqItem);
+                });
+                
+                chatMessages.appendChild(faqContainer);
+                
+                // Show navigation buttons
+                navButtons.style.display = 'flex';
+                
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            });
+        }
+        
+        function addBotMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot-message';
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function addUserMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message user-message';
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // Navigation Buttons
+        backToMenu.addEventListener('click', () => {
+            // Remove FAQ container
+            const faqContainer = document.querySelector('.faq-container');
+            if(faqContainer) faqContainer.remove();
+            
+            // Hide nav buttons
+            navButtons.style.display = 'none';
+            
+            // Show categories again
+            showCategories();
+        });
+        
+        endChatBtn.addEventListener('click', endChat);
+        
+        function endChat() {
+            chatInterface.classList.remove('active');
+            navButtons.style.display = 'none';
+            chatInput.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - TravelPal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .container { width: 100%; max-width: 800px; background: rgba(255, 255, 255, 0.95); border-radius: 20px; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); overflow: hidden; padding: 40px; }
+        .form-header { text-align: center; margin-bottom: 30px; }
+        .form-header h1 { color: #1a2a6c; font-size: 2.5rem; margin-bottom: 10px; }
+        .form-header p { color: #666; font-size: 1.1rem; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
+        .form-group input { width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem; transition: border-color 0.3s; }
+        .form-group input:focus { border-color: #1a2a6c; outline: none; }
+        .btn { display: block; width: 100%; padding: 15px; background: #1a2a6c; color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background 0.3s, transform 0.2s; }
+        .btn:hover { background: #0d1a4d; transform: translateY(-2px); }
+        .btn:active { transform: translateY(0); }
+        .auth-switch { text-align: center; margin-top: 20px; color: #555; }
+        .auth-switch a { color: #1a2a6c; text-decoration: none; font-weight: 600; }
+        .auth-switch a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-header">
+            <h1>Create Account</h1>
+            <p>Join TravelPal to get personalized travel assistance</p>
+        </div>
+        <form method="POST" action="{{ url_for('signup') }}">
+            <div class="form-group">
+                <label for="username">Full Name</label>
+                <input type="text" id="username" name="username" required placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Create a password">
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+        <div class="auth-switch">
+            Already have an account? <a href="{{ url_for('login') }}">Log in</a>
+        </div>
+    </div>
+</body>
+</html>
