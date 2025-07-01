@@ -19,10 +19,78 @@
         .chat-container { display: flex; gap: 20px; height: calc(100vh - 120px); }
         .chat-sidebar { width: 250px; background: rgba(255, 255, 255, 0.9); border-radius: 15px; padding: 20px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
         .chat-main { flex: 1; background: rgba(255, 255, 255, 0.9); border-radius: 15px; padding: 20px; display: flex; flex-direction: column; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); position: relative; background-image: url('https://images.unsplash.com/photo-1501555088652-021faa106b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; }
-        .chatbot-logo { position: absolute; bottom: 30px; left: 30px; width: 70px; height: 70px; background: #1a2a6c; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); transition: transform 0.3s; z-index: 100; }
+        .chatbot-logo {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            left: auto;
+            width: 70px;
+            height: 70px;
+            background: #1a2a6c;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+            z-index: 100;
+            overflow: visible;
+        }
+        .chatbot-logo .ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 90px;
+            height: 90px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 6px solid #10036f;
+            opacity: 0.7;
+            animation: ripple 1.5s infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+        @keyframes ripple {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 0.7;
+            }
+            70% {
+                transform: translate(-50%, -50%) scale(1.3);
+                opacity: 0.2;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0;
+            }
+        }
         .chatbot-logo:hover { transform: scale(1.1); }
-        .chatbot-logo i { font-size: 30px; color: white; }
-        .chat-interface { position: absolute; bottom: 120px; left: 30px; width: 400px; height: 500px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); display: flex; flex-direction: column; overflow: hidden; transform: scale(0); transform-origin: bottom left; transition: transform 0.3s ease; z-index: 99; }
+        .chatbot-logo i {
+            font-size: 30px;
+            color: white;
+            z-index: 2;
+            position: relative;
+        }
+        .chat-interface { 
+            position: absolute; 
+            bottom: 120px; 
+            right: 30px; /* changed from left: 30px; */
+            left: auto;  /* ensure left is unset */
+            width: 400px; 
+            height: 500px; 
+            background: white; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+            display: flex; 
+            flex-direction: column; 
+            overflow: hidden; 
+            transform: scale(0); 
+            transform-origin: bottom right; /* changed from bottom left */
+            transition: transform 0.3s ease; 
+            z-index: 99; 
+        }
+
         .chat-interface.active { transform: scale(1); }
         .chat-header { background: #1a2a6c; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
         .chat-header h3 { font-weight: 600; }
@@ -58,7 +126,14 @@
         @media (max-width: 900px) {
             .chat-container { flex-direction: column; }
             .chat-sidebar { width: 100%; }
-            .chat-interface { width: 90%; left: 5%; bottom: 100px; height: 400px; }
+            .chat-interface { 
+                width: 90%; 
+                right: 5%; /* changed from left: 5%; */
+                left: auto; /* ensure left is unset */
+                bottom: 100px; 
+                height: 400px; 
+                transform-origin: bottom right; /* changed from bottom left */
+            }
         }
     </style>
 </head>
@@ -97,6 +172,7 @@
         
         <div class="chat-main">
             <div class="chatbot-logo" id="chatbot-logo">
+                <span class="ring"></span>
                 <i class="fas fa-robot"></i>
             </div>
             
@@ -129,6 +205,7 @@
     </div>
 
     <script>
+        const signedInUserName = {{ username|tojson }};
         // DOM Elements
         const chatbotLogo = document.getElementById('chatbot-logo');
         const chatInterface = document.getElementById('chat-interface');
@@ -187,34 +264,14 @@
         
         function selectLanguage(lang) {
             chatState.language = lang;
-            
+            chatState.name = signedInUserName; // Use the signed-in user's name
+
             // Remove options
             const optionsDiv = document.querySelector('.options-container');
             if(optionsDiv) optionsDiv.remove();
-            
-            // Ask for name
-            if(lang === 'hi') {
-                addBotMessage("आपका नाम क्या है?");
-            } else {
-                addBotMessage("What's your name?");
-            }
-            
-            // Show input field
-            chatInput.style.display = 'block';
-            userInput.focus();
-            
-            // Handle name input
-            userInput.onkeypress = (e) => {
-                if(e.key === 'Enter') {
-                    const name = userInput.value.trim();
-                    if(name) {
-                        chatState.name = name;
-                        userInput.value = '';
-                        chatInput.style.display = 'none';
-                        greetUser();
-                    }
-                }
-            };
+
+            greetUser(); // Directly greet the user
+            chatInput.style.display = 'none'; // Hide input field
         }
         
         function greetUser() {
@@ -246,18 +303,18 @@
                     packages: "टूर पैकेज"
                 }
             };
-            
+
             const optionsDiv = document.createElement('div');
             optionsDiv.className = 'options-container';
-            
+
             for(const [key, text] of Object.entries(categories[lang])) {
                 const btn = document.createElement('button');
                 btn.className = 'option-btn';
                 btn.textContent = text;
-                btn.addEventListener('click', () => showCategoryFAQ(key));
+                btn.addEventListener('click', () => showSubcategories(key));
                 optionsDiv.appendChild(btn);
             }
-            
+
             // Add End Chat button
             const endBtn = document.createElement('button');
             endBtn.className = 'option-btn';
@@ -266,16 +323,105 @@
             endBtn.textContent = lang === 'hi' ? "चैट समाप्त करें" : "End Chat";
             endBtn.addEventListener('click', endChat);
             optionsDiv.appendChild(endBtn);
-            
+
             chatMessages.appendChild(optionsDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
-        
-        function showCategoryFAQ(category) {
+
+        // Add this new function below showCategories
+        function showSubcategories(category) {
+            const lang = chatState.language;
+            // Remove previous options
+            const optionsDiv = document.querySelector('.options-container');
+            if(optionsDiv) optionsDiv.remove();
+
+            // Define subcategories for each main category
+            const subcategories = {
+                en: {
+                    flights: {
+                        boarding: "Boarding Process",
+                        price: "Price & Refund",
+                        allowances: "Allowances",
+                        other: "Other"
+                    },
+                    hotels: {
+                        booking: "Booking Process",
+                        amenities: "Amenities",
+                        cancellation: "Cancellation & Refund",
+                        other: "Other"
+                    },
+                    visas: {
+                        application: "Application Process",
+                        documents: "Required Documents",
+                        fees: "Fees & Payment",
+                        other: "Other"
+                    },
+                    packages: {
+                        inclusions: "What's Included",
+                        booking: "Booking & Payment",
+                        cancellation: "Cancellation Policy",
+                        other: "Other"
+                    }
+                },
+                hi: {
+                    flights: {
+                        boarding: "बोर्डिंग प्रक्रिया",
+                        price: "मूल्य और रिफंड",
+                        allowances: "भत्ता",
+                        other: "अन्य"
+                    },
+                    hotels: {
+                        booking: "बुकिंग प्रक्रिया",
+                        amenities: "सुविधाएँ",
+                        cancellation: "रद्दीकरण और रिफंड",
+                        other: "अन्य"
+                    },
+                    visas: {
+                        application: "आवेदन प्रक्रिया",
+                        documents: "आवश्यक दस्तावेज़",
+                        fees: "शुल्क और भुगतान",
+                        other: "अन्य"
+                    },
+                    packages: {
+                        inclusions: "क्या शामिल है",
+                        booking: "बुकिंग और भुगतान",
+                        cancellation: "रद्दीकरण नीति",
+                        other: "अन्य"
+                    }
+                }
+            };
+
+            const subcatDiv = document.createElement('div');
+            subcatDiv.className = 'options-container';
+
+            for(const [subKey, subText] of Object.entries(subcategories[lang][category])) {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = subText;
+                btn.addEventListener('click', () => showCategoryFAQ(category, subKey));
+                subcatDiv.appendChild(btn);
+            }
+
+            // Add Back button
+            const backBtn = document.createElement('button');
+            backBtn.className = 'option-btn';
+            backBtn.textContent = lang === 'hi' ? "वापस" : "Back";
+            backBtn.addEventListener('click', () => {
+                subcatDiv.remove();
+                showCategories();
+            });
+            subcatDiv.appendChild(backBtn);
+
+            chatMessages.appendChild(subcatDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Update showCategoryFAQ to accept subcategory
+        function showCategoryFAQ(category, subcategory = null) {
             chatState.currentCategory = category;
             const lang = chatState.language;
-            
-            // Fetch FAQs from server
+
+            // Fetch FAQs from server, now also send subcategory
             fetch('/get_faqs', {
                 method: 'POST',
                 headers: {
@@ -283,6 +429,7 @@
                 },
                 body: JSON.stringify({
                     category: category,
+                    subcategory: subcategory, // send subcategory to backend
                     language: lang
                 })
             })
@@ -291,7 +438,7 @@
                 // Remove options
                 const optionsDiv = document.querySelector('.options-container');
                 if(optionsDiv) optionsDiv.remove();
-                
+
                 // Show category title
                 const categoryTitles = {
                     en: {
@@ -307,27 +454,27 @@
                         packages: "टूर पैकेजों के बारे में अक्सर पूछे जाने वाले प्रश्न"
                     }
                 };
-                
+
                 addBotMessage(categoryTitles[lang][category]);
-                
+
                 // Create FAQ container
                 const faqContainer = document.createElement('div');
                 faqContainer.className = 'faq-container';
-                
+
                 // Add each FAQ
                 faqs.forEach((faq, index) => {
                     const faqItem = document.createElement('div');
                     faqItem.className = 'faq-item';
-                    
+
                     const faqQuestion = document.createElement('div');
                     faqQuestion.className = 'faq-question';
                     faqQuestion.textContent = faq.question;
                     faqQuestion.innerHTML += '<i class="fas fa-chevron-down"></i>';
-                    
+
                     const faqAnswer = document.createElement('div');
                     faqAnswer.className = 'faq-answer';
                     faqAnswer.textContent = faq.answer;
-                    
+
                     faqQuestion.addEventListener('click', () => {
                         faqItem.classList.toggle('active');
                         const icon = faqQuestion.querySelector('i');
@@ -337,17 +484,17 @@
                             icon.className = 'fas fa-chevron-down';
                         }
                     });
-                    
+
                     faqItem.appendChild(faqQuestion);
                     faqItem.appendChild(faqAnswer);
                     faqContainer.appendChild(faqItem);
                 });
-                
+
                 chatMessages.appendChild(faqContainer);
-                
+
                 // Show navigation buttons
                 navButtons.style.display = 'flex';
-                
+
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             });
         }
