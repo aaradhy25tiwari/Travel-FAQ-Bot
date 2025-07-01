@@ -15,7 +15,7 @@ pip install -r requirements.txt
 - Download or clone the repository
 
 ```bash
-git clone https://github.com/aaradhy25tiwari/Titanic-Dataset-Chat-Agent.git
+git clone https://github.com/aaradhy25tiwari/Travel-FAQ-Bot.git
 ```
 
 - To run the code
