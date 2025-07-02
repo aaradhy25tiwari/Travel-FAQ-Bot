@@ -287,6 +287,7 @@
             showCategories();
         }
         
+        // --- In your showCategories() function, update categories and add new ones ---
         function showCategories() {
             const lang = chatState.language;
             const categories = {
@@ -294,13 +295,19 @@
                     flights: "Flights",
                     hotels: "Hotels",
                     visas: "Visas",
-                    packages: "Tour Packages"
+                    packages: "Tour Packages",
+                    buses: "Buses",
+                    cabs: "Cabs",
+                    car_rentals: "Car Rentals"
                 },
                 hi: {
                     flights: "उड़ानें",
                     hotels: "होटल",
                     visas: "वीजा",
-                    packages: "टूर पैकेज"
+                    packages: "टूर पैकेज",
+                    buses: "बस",
+                    cabs: "कैब",
+                    car_rentals: "कार रेंटल"
                 }
             };
 
@@ -328,14 +335,12 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-        // Add this new function below showCategories
+        // --- In your showSubcategories() function, add subcategories for new categories ---
         function showSubcategories(category) {
             const lang = chatState.language;
-            // Remove previous options
             const optionsDiv = document.querySelector('.options-container');
             if(optionsDiv) optionsDiv.remove();
 
-            // Define subcategories for each main category
             const subcategories = {
                 en: {
                     flights: {
@@ -360,6 +365,25 @@
                         inclusions: "What's Included",
                         booking: "Booking & Payment",
                         cancellation: "Cancellation Policy",
+                        other: "Other"
+                    },
+                    buses: {
+                        booking: "Booking Process",
+                        boarding: "Boarding Process",
+                        allowances: "Allowances",
+                        cancellation: "Cancellation & Refund",
+                        other: "Other"
+                    },
+                    cabs: {
+                        booking: "Booking Process",
+                        price: "Price & Fare",
+                        allowances: "Allowances",
+                        other: "Other"
+                    },
+                    car_rentals: {
+                        booking: "Booking Process",
+                        documents: "Required Documents",
+                        price: "Price & Charges",
                         other: "Other"
                     }
                 },
@@ -386,6 +410,25 @@
                         inclusions: "क्या शामिल है",
                         booking: "बुकिंग और भुगतान",
                         cancellation: "रद्दीकरण नीति",
+                        other: "अन्य"
+                    },
+                    buses: {
+                        booking: "बुकिंग प्रक्रिया",
+                        boarding: "बोर्डिंग प्रक्रिया",
+                        allowances: "भत्ता",
+                        cancellation: "रद्दीकरण और रिफंड",
+                        other: "अन्य"
+                    },
+                    cabs: {
+                        booking: "बुकिंग प्रक्रिया",
+                        price: "मूल्य और किराया",
+                        allowances: "भत्ता",
+                        other: "अन्य"
+                    },
+                    car_rentals: {
+                        booking: "बुकिंग प्रक्रिया",
+                        documents: "आवश्यक दस्तावेज़",
+                        price: "मूल्य और शुल्क",
                         other: "अन्य"
                     }
                 }
@@ -416,12 +459,12 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-        // Update showCategoryFAQ to accept subcategory
+        // --- In your showCategoryFAQ() function, add a Back to Subcategories button ---
         function showCategoryFAQ(category, subcategory = null) {
             chatState.currentCategory = category;
+            chatState.currentSubcategory = subcategory;
             const lang = chatState.language;
 
-            // Fetch FAQs from server, now also send subcategory
             fetch('/get_faqs', {
                 method: 'POST',
                 headers: {
@@ -429,7 +472,7 @@
                 },
                 body: JSON.stringify({
                     category: category,
-                    subcategory: subcategory, // send subcategory to backend
+                    subcategory: subcategory,
                     language: lang
                 })
             })
@@ -445,13 +488,19 @@
                         flights: "Frequently Asked Questions about Flights",
                         hotels: "Frequently Asked Questions about Hotels",
                         visas: "Frequently Asked Questions about Visas",
-                        packages: "Frequently Asked Questions about Tour Packages"
+                        packages: "Frequently Asked Questions about Tour Packages",
+                        buses: "Frequently Asked Questions about Buses",
+                        cabs: "Frequently Asked Questions about Cabs",
+                        car_rentals: "Frequently Asked Questions about Car Rentals"
                     },
                     hi: {
                         flights: "उड़ानों के बारे में अक्सर पूछे जाने वाले प्रश्न",
                         hotels: "होटलों के बारे में अक्सर पूछे जाने वाले प्रश्न",
                         visas: "वीजा के बारे में अक्सर पूछे जाने वाले प्रश्न",
-                        packages: "टूर पैकेजों के बारे में अक्सर पूछे जाने वाले प्रश्न"
+                        packages: "टूर पैकेजों के बारे में अक्सर पूछे जाने वाले प्रश्न",
+                        buses: "बसों के बारे में अक्सर पूछे जाने वाले प्रश्न",
+                        cabs: "कैब के बारे में अक्सर पूछे जाने वाले प्रश्न",
+                        car_rentals: "कार रेंटल के बारे में अक्सर पूछे जाने वाले प्रश्न"
                     }
                 };
 
@@ -461,7 +510,6 @@
                 const faqContainer = document.createElement('div');
                 faqContainer.className = 'faq-container';
 
-                // Add each FAQ
                 faqs.forEach((faq, index) => {
                     const faqItem = document.createElement('div');
                     faqItem.className = 'faq-item';
@@ -495,9 +543,46 @@
                 // Show navigation buttons
                 navButtons.style.display = 'flex';
 
+                // Add Back to Subcategories button
+                let backToSubcatBtn = document.getElementById('back-to-subcat');
+                if (!backToSubcatBtn) {
+                    backToSubcatBtn = document.createElement('button');
+                    backToSubcatBtn.id = 'back-to-subcat';
+                    backToSubcatBtn.className = 'nav-btn menu-btn';
+                    backToSubcatBtn.innerHTML = lang === 'hi' ? '<i class="fas fa-arrow-left"></i> उप-श्रेणियाँ' : '<i class="fas fa-arrow-left"></i> Subcategories';
+                    backToSubcatBtn.style.marginRight = "10px";
+                    navButtons.insertBefore(backToSubcatBtn, navButtons.firstChild);
+                }
+                backToSubcatBtn.style.display = 'inline-block';
+                backToSubcatBtn.onclick = () => {
+                    // Remove FAQ container
+                    const faqContainer = document.querySelector('.faq-container');
+                    if(faqContainer) faqContainer.remove();
+                    navButtons.style.display = 'none';
+                    backToSubcatBtn.style.display = 'none';
+                    showSubcategories(category);
+                };
+
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             });
         }
+
+        // --- Hide Back to Subcategories button when going to main menu ---
+        backToMenu.addEventListener('click', () => {
+            // Remove FAQ container
+            const faqContainer = document.querySelector('.faq-container');
+            if(faqContainer) faqContainer.remove();
+
+            // Hide nav buttons
+            navButtons.style.display = 'none';
+
+            // Hide back to subcat button if present
+            const backToSubcatBtn = document.getElementById('back-to-subcat');
+            if (backToSubcatBtn) backToSubcatBtn.style.display = 'none';
+
+            // Show categories again
+            showCategories();
+        });
         
         function addBotMessage(text) {
             const messageDiv = document.createElement('div');

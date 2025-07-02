@@ -59,14 +59,19 @@ def logout():
 def get_faqs():
     data = request.json
     category = data.get('category')
+    subcategory = data.get('subcategory')  # Get subcategory from request
     language = data.get('language')
 
     faq_data = load_faq_data()
 
-    if category in faq_data and language in faq_data[category]:
-        return jsonify(faq_data[category][language])
-    return jsonify([])
+    # Get all FAQs for the category and language
+    faqs = faq_data.get(category, {}).get(language, [])
 
+    # If subcategory is provided, filter by subcategory
+    if subcategory:
+        faqs = [faq for faq in faqs if faq.get('subcategory') == subcategory]
+
+    return jsonify(faqs)
 @app.route('/chat')
 def chat():
     if 'user' not in session:

@@ -2,204 +2,512 @@
   "flights": {
     "en": [
       {
+        "subcategory": "boarding",
         "question": "How early should I arrive at the airport before a domestic flight?",
         "answer": "At least 2 hours before departure."
       },
       {
+        "subcategory": "allowances",
         "question": "Can I carry food in my cabin baggage?",
         "answer": "Yes, but liquids are restricted."
       },
       {
+        "subcategory": "boarding",
         "question": "What documents are required for boarding a domestic flight in India?",
         "answer": "Valid ID like Aadhaar, Voter ID, or Passport."
       },
       {
+        "subcategory": "price",
         "question": "Are flight tickets refundable?",
         "answer": "Depends on the fare type."
       },
       {
+        "subcategory": "allowances",
         "question": "How many bags are allowed in a domestic flight?",
         "answer": "Usually 15kg check-in and 7kg cabin baggage."
       },
       {
+        "subcategory": "other",
         "question": "What should I do if my flight is cancelled?",
         "answer": "Contact the airline for rebooking or refund."
       },
       {
+        "subcategory": "boarding",
         "question": "Can I check-in online?",
         "answer": "Yes, 24-48 hours before departure."
       },
       {
+        "subcategory": "boarding",
         "question": "What is web check-in?",
-        "answer": "Checking in via airline\u2019s website or app."
+        "answer": "Checking in via airline’s website or app."
       },
       {
+        "subcategory": "other",
         "question": "Is RT-PCR test needed to fly?",
         "answer": "Depends on destination and current rules."
       },
       {
+        "subcategory": "other",
         "question": "Can I change the name on my flight ticket?",
         "answer": "Not usually allowed; contact the airline."
+      },
+      {
+        "subcategory": "price",
+        "question": "How can I get a refund for a cancelled flight?",
+        "answer": "Refunds are processed to your original payment method."
+      },
+      {
+        "subcategory": "allowances",
+        "question": "Are pets allowed on flights?",
+        "answer": "Some airlines allow pets with prior booking."
+      },
+      {
+        "subcategory": "boarding",
+        "question": "Can I board with a digital boarding pass?",
+        "answer": "Yes, most airports accept digital boarding passes."
       }
     ],
     "hi": [
       {
-        "question": "\u0918\u0930\u0947\u0932\u0942 \u0909\u0921\u093c\u093e\u0928 \u0915\u0947 \u0932\u093f\u090f \u090f\u092f\u0930\u092a\u094b\u0930\u094d\u091f \u092a\u0930 \u0915\u093f\u0924\u0928\u0940 \u091c\u0932\u094d\u0926\u0940 \u092a\u0939\u0941\u0901\u091a\u0928\u093e \u091a\u093e\u0939\u093f\u090f?",
-        "answer": "\u0909\u0921\u093c\u093e\u0928 \u0938\u0947 \u0915\u092e \u0938\u0947 \u0915\u092e 2 \u0918\u0902\u091f\u0947 \u092a\u0939\u0932\u0947\u0964"
+        "subcategory": "boarding",
+        "question": "घरेलू उड़ान के लिए एयरपोर्ट पर कितनी जल्दी पहुँचाना चाहिए?",
+        "answer": "कम से कम 2 घंटे पहले पहुँचना चाहिए।"
       },
       {
-        "question": "\u0915\u094d\u092f\u093e \u092e\u0948\u0902 \u0905\u092a\u0928\u0947 \u0939\u0948\u0902\u0921 \u092c\u0948\u0917\u0947\u091c \u092e\u0947\u0902 \u0916\u093e\u0928\u093e \u0932\u0947 \u091c\u093e \u0938\u0915\u0924\u093e/\u0938\u0915\u0924\u0940 \u0939\u0942\u0901?",
-        "answer": "\u0939\u093e\u0901, \u0932\u0947\u0915\u093f\u0928 \u0924\u0930\u0932 \u092a\u0926\u093e\u0930\u094d\u0925\u094b\u0902 \u092a\u0930 \u0930\u094b\u0915 \u0939\u0948\u0964"
+        "subcategory": "allowances",
+        "question": "क्या मैं हैंड बैगेज में खाना ले जा सकता/सकती हूँ?",
+        "answer": "हाँ, लेकिन लिक्विड्स की सीमा होती है।"
       },
       {
-        "question": "\u092d\u093e\u0930\u0924 \u092e\u0947\u0902 \u0918\u0930\u0947\u0932\u0942 \u0909\u0921\u093c\u093e\u0928 \u092e\u0947\u0902 \u091a\u0922\u093c\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0915\u094c\u0928 \u0938\u0947 \u0926\u0938\u094d\u0924\u093e\u0935\u0947\u091c\u093c \u091a\u093e\u0939\u093f\u090f?",
-        "answer": "\u092e\u093e\u0928\u094d\u092f \u092a\u0939\u091a\u093e\u0928 \u092a\u0924\u094d\u0930 \u091c\u0948\u0938\u0947 \u0906\u0927\u093e\u0930, \u0935\u094b\u091f\u0930 \u0906\u0908\u0921\u0940 \u092f\u093e \u092a\u093e\u0938\u092a\u094b\u0930\u094d\u091f\u0964"
+        "subcategory": "boarding",
+        "question": "भारत में घरेलू उड़ान के लिए बोर्डिंग के समय कौन से दस्तावेज़ चाहिए?",
+        "answer": "मान्य आईडी जैसे आधार, वोटर आईडी या पासपोर्ट।"
       },
       {
-        "question": "\u0915\u094d\u092f\u093e \u092b\u094d\u0932\u093e\u0907\u091f \u091f\u093f\u0915\u091f \u0930\u093f\u092b\u0902\u0921\u0947\u092c\u0932 \u0939\u094b\u0924\u0947 \u0939\u0948\u0902?",
-        "answer": "\u0915\u093f\u0930\u093e\u092f\u0947 \u0915\u0940 \u0936\u094d\u0930\u0947\u0923\u0940 \u092a\u0930 \u0928\u093f\u0930\u094d\u092d\u0930 \u0915\u0930\u0924\u093e \u0939\u0948\u0964"
+        "subcategory": "price",
+        "question": "क्या फ्लाइट टिकट रिफंडेबल होते हैं?",
+        "answer": "यह आपके किराए के प्रकार पर निर्भर करता है।"
       },
       {
-        "question": "\u0918\u0930\u0947\u0932\u0942 \u0909\u0921\u093c\u093e\u0928 \u092e\u0947\u0902 \u0915\u093f\u0924\u0928\u0947 \u092c\u0948\u0917 \u0915\u0940 \u0905\u0928\u0941\u092e\u0924\u093f \u0939\u0948?",
-        "answer": "\u0906\u092e\u0924\u094c\u0930 \u092a\u0930 15 \u0915\u093f\u0932\u094b \u091a\u0947\u0915-\u0907\u0928 \u0914\u0930 7 \u0915\u093f\u0932\u094b \u0939\u0948\u0902\u0921 \u092c\u0948\u0917\u0947\u091c\u0964"
+        "subcategory": "allowances",
+        "question": "घरेलू उड़ान में कितने बैग की अनुमति है?",
+        "answer": "आमतौर पर 15 किलोग्राम चेक-इन और 7 किलोग्राम हैंड बैगेज।"
+      },
+      {
+        "subcategory": "other",
+        "question": "अगर मेरी फ्लाइट कैंसिल हो जाए तो क्या करूँ?",
+        "answer": "एयरलाइन से संपर्क करें, वे रीबुकिंग या रिफंड में मदद करेंगे।"
+      },
+      {
+        "subcategory": "boarding",
+        "question": "क्या मैं ऑनलाइन चेक-इन कर सकता/सकती हूँ?",
+        "answer": "हाँ, उड़ान से 24-48 घंटे पहले कर सकते हैं।"
+      },
+      {
+        "subcategory": "boarding",
+        "question": "वेब चेक-इन क्या है?",
+        "answer": "एयरलाइन की वेबसाइट या ऐप से चेक-इन करना।"
+      },
+      {
+        "subcategory": "other",
+        "question": "क्या फ्लाइट के लिए RT-PCR टेस्ट जरूरी है?",
+        "answer": "गंतव्य और नियमों पर निर्भर करता है।"
+      },
+      {
+        "subcategory": "other",
+        "question": "क्या मैं अपने फ्लाइट टिकट पर नाम बदल सकता/सकती हूँ?",
+        "answer": "आमतौर पर अनुमति नहीं है; एयरलाइन से संपर्क करें।"
+      },
+      {
+        "subcategory": "price",
+        "question": "रद्द की गई फ्लाइट का रिफंड कैसे मिलेगा?",
+        "answer": "रिफंड आपके मूल भुगतान माध्यम में भेजा जाएगा।"
+      },
+      {
+        "subcategory": "allowances",
+        "question": "क्या फ्लाइट में पालतू जानवर ले जा सकते हैं?",
+        "answer": "कुछ एयरलाइंस पूर्व बुकिंग पर अनुमति देती हैं।"
+      },
+      {
+        "subcategory": "boarding",
+        "question": "क्या डिजिटल बोर्डिंग पास से बोर्डिंग कर सकते हैं?",
+        "answer": "हाँ, अधिकांश एयरपोर्ट डिजिटल बोर्डिंग पास स्वीकार करते हैं।"
       }
     ]
   },
   "hotels": {
     "en": [
       {
+        "subcategory": "booking",
         "question": "How do I find the best hotel deals?",
         "answer": "Use our price comparison tool to find the best deals."
       },
       {
+        "subcategory": "amenities",
         "question": "What amenities can I expect?",
         "answer": "Most hotels offer free WiFi, breakfast, and parking."
       },
       {
+        "subcategory": "cancellation",
         "question": "What is your cancellation policy?",
         "answer": "Cancellation policies vary by hotel."
       },
       {
+        "subcategory": "booking",
         "question": "How can I request a room with a view?",
         "answer": "You can make special requests when booking."
       },
       {
+        "subcategory": "amenities",
         "question": "What is the difference between a suite and a standard room?",
         "answer": "Suites have separate living and sleeping areas."
+      },
+      {
+        "subcategory": "booking",
+        "question": "Can I book a hotel without a credit card?",
+        "answer": "Some hotels allow booking without a credit card."
+      },
+      {
+        "subcategory": "cancellation",
+        "question": "Will I be charged if I don't show up?",
+        "answer": "Most hotels charge a no-show fee."
       }
     ],
     "hi": [
       {
-        "question": "\u092e\u0948\u0902 \u0938\u092c\u0938\u0947 \u0905\u091a\u094d\u091b\u0947 \u0939\u094b\u091f\u0932 \u0921\u0940\u0932 \u0915\u0948\u0938\u0947 \u0922\u0942\u0902\u0922\u0942\u0901?",
-        "answer": "\u0939\u092e\u093e\u0930\u0947 \u092e\u0942\u0932\u094d\u092f \u0924\u0941\u0932\u0928\u093e \u0909\u092a\u0915\u0930\u0923 \u0915\u093e \u0909\u092a\u092f\u094b\u0917 \u0915\u0930\u0947\u0902\u0964"
+        "subcategory": "booking",
+        "question": "मैं सबसे अच्छे होटल डील कैसे ढूंढूं?",
+        "answer": "हमारे मूल्य तुलना टूल का उपयोग करें।"
       },
       {
-        "question": "\u092e\u0941\u091d\u0947 \u0915\u094d\u092f\u093e \u0938\u0941\u0935\u093f\u0927\u093e\u090f\u0901 \u092e\u093f\u0932 \u0938\u0915\u0924\u0940 \u0939\u0948\u0902?",
-        "answer": "\u0905\u0927\u093f\u0915\u093e\u0902\u0936 \u0939\u094b\u091f\u0932 \u092e\u0941\u092b\u094d\u0924 \u0935\u093e\u092f\u093e\u092b\u093e\u0908, \u0928\u093e\u0936\u094d\u0924\u093e \u0914\u0930 \u092a\u093e\u0930\u094d\u0915\u093f\u0902\u0917 \u092a\u094d\u0930\u0926\u093e\u0928 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964"
+        "subcategory": "amenities",
+        "question": "मुझे क्या सुविधाएँ मिल सकती हैं?",
+        "answer": "अधिकांश होटल मुफ्त वाईफाई, नाश्ता और पार्किंग प्रदान करते हैं।"
       },
       {
-        "question": "\u0906\u092a\u0915\u0940 \u0930\u0926\u094d\u0926 \u0915\u0930\u0928\u0947 \u0915\u0940 \u0928\u0940\u0924\u093f \u0915\u094d\u092f\u093e \u0939\u0948?",
-        "answer": "\u0930\u0926\u094d\u0926 \u0915\u0930\u0928\u0947 \u0915\u0940 \u0928\u0940\u0924\u093f\u092f\u093e\u0901 \u0939\u094b\u091f\u0932 \u0915\u0947 \u0905\u0928\u0941\u0938\u093e\u0930 \u0905\u0932\u0917-\u0905\u0932\u0917 \u0939\u094b\u0924\u0940 \u0939\u0948\u0902\u0964"
+        "subcategory": "cancellation",
+        "question": "आपकी रद्द करने की नीति क्या है?",
+        "answer": "रद्द करने की नीतियाँ होटल के अनुसार अलग-अलग होती हैं।"
       },
       {
-        "question": "\u092e\u0948\u0902 \u0926\u0943\u0936\u094d\u092f \u0935\u093e\u0932\u093e \u0915\u092e\u0930\u093e \u0915\u0948\u0938\u0947 \u092e\u093e\u0901\u0917 \u0938\u0915\u0924\u093e \u0939\u0942\u0901?",
-        "answer": "\u0906\u092a \u092c\u0941\u0915\u093f\u0902\u0917 \u0915\u0930\u0924\u0947 \u0938\u092e\u092f \u0935\u093f\u0936\u0947\u0937 \u0905\u0928\u0941\u0930\u094b\u0927 \u0915\u0930 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902\u0964"
+        "subcategory": "booking",
+        "question": "क्या मैं व्यू वाला कमरा मांग सकता/सकती हूँ?",
+        "answer": "बुकिंग के समय विशेष अनुरोध कर सकते हैं।"
       },
       {
-        "question": "\u0938\u094d\u0935\u0940\u091f \u0914\u0930 \u0938\u094d\u091f\u0948\u0902\u0921\u0930\u094d\u0921 \u0915\u092e\u0930\u0947 \u092e\u0947\u0902 \u0915\u094d\u092f\u093e \u0905\u0902\u0924\u0930 \u0939\u0948?",
-        "answer": "\u0938\u094d\u0935\u0940\u091f \u092e\u0947\u0902 \u0905\u0932\u0917 \u0932\u093f\u0935\u093f\u0902\u0917 \u0914\u0930 \u0938\u094b\u0928\u0947 \u0915\u0947 \u0915\u094d\u0937\u0947\u0924\u094d\u0930 \u0939\u094b\u0924\u0947 \u0939\u0948\u0902\u0964"
+        "subcategory": "amenities",
+        "question": "सुइट और स्टैंडर्ड कमरे में क्या अंतर है?",
+        "answer": "सुइट में अलग लिविंग और स्लीपिंग एरिया होता है।"
+      },
+      {
+        "subcategory": "booking",
+        "question": "क्या मैं बिना क्रेडिट कार्ड के होटल बुक कर सकता/सकती हूँ?",
+        "answer": "कुछ होटल बिना क्रेडिट कार्ड के बुकिंग की अनुमति देते हैं।"
+      },
+      {
+        "subcategory": "cancellation",
+        "question": "अगर मैं नहीं पहुँचूं तो क्या शुल्क लगेगा?",
+        "answer": "अधिकांश होटल नो-शो शुल्क लेते हैं।"
       }
     ]
   },
   "visas": {
     "en": [
       {
+        "subcategory": "application",
         "question": "How long does visa processing take?",
         "answer": "Typically 15-30 days for tourist visas."
       },
       {
+        "subcategory": "documents",
         "question": "What documents are required?",
         "answer": "Passport, photos, application form, and financial proof."
       },
       {
+        "subcategory": "application",
         "question": "Can you help with visa applications?",
         "answer": "Yes, we offer comprehensive visa assistance services."
       },
       {
+        "subcategory": "other",
         "question": "What is the validity of a tourist visa?",
         "answer": "Varies by country, typically 3 months to 10 years."
       },
       {
+        "subcategory": "other",
         "question": "Do I need a visa for connecting flights?",
         "answer": "Depends on the country and airport transit rules."
+      },
+      {
+        "subcategory": "fees",
+        "question": "How much is the visa fee?",
+        "answer": "Visa fees vary by country and visa type."
+      },
+      {
+        "subcategory": "documents",
+        "question": "Do I need travel insurance for a visa?",
+        "answer": "Some countries require travel insurance for visa approval."
       }
     ],
     "hi": [
       {
-        "question": "\u0935\u0940\u091c\u093c\u093e \u092a\u094d\u0930\u0938\u0902\u0938\u0915\u0930\u0923 \u092e\u0947\u0902 \u0915\u093f\u0924\u0928\u093e \u0938\u092e\u092f \u0932\u0917\u0924\u093e \u0939\u0948?",
-        "answer": "\u092a\u0930\u094d\u092f\u091f\u0915 \u0935\u0940\u091c\u093c\u093e \u0915\u0947 \u0932\u093f\u090f \u0906\u092e\u0924\u094c\u0930 \u092a\u0930 15-30 \u0926\u093f\u0928\u0964"
+        "subcategory": "application",
+        "question": "वीज़ा प्रसंस्करण में कितना समय लगता है?",
+        "answer": "आमतौर पर टूरिस्ट वीज़ा के लिए 15-30 दिन।"
       },
       {
-        "question": "\u0915\u094c\u0928 \u0938\u0947 \u0926\u0938\u094d\u0924\u093e\u0935\u0947\u091c\u093c \u0906\u0935\u0936\u094d\u092f\u0915 \u0939\u0948\u0902?",
-        "answer": "\u092a\u093e\u0938\u092a\u094b\u0930\u094d\u091f, \u092b\u094b\u091f\u094b, \u0906\u0935\u0947\u0926\u0928 \u092a\u0924\u094d\u0930 \u0914\u0930 \u0935\u093e\u0924\u093e\u0935\u0930\u0923 \u0938\u092e\u0930\u094d\u0925\u0928 \u0915\u0947 \u0938\u092c\u0942\u0924\u0964"
+        "subcategory": "documents",
+        "question": "कौन से दस्तावेज़ आवश्यक हैं?",
+        "answer": "पासपोर्ट, फोटो, आवेदन पत्र और वित्तीय प्रमाण।"
       },
       {
-        "question": "\u0915\u094d\u092f\u093e \u0906\u092a \u0935\u0940\u091c\u093c\u093e \u0906\u0935\u0947\u0926\u0928 \u092e\u0947\u0902 \u092e\u0926\u0926 \u0915\u0930 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902?",
-        "answer": "\u0939\u093e\u0901, \u0939\u092e \u0935\u094d\u092f\u093e\u092a\u0915 \u0935\u0940\u091c\u093c\u093e \u0938\u0939\u093e\u092f\u0924\u093e \u0938\u0947\u0935\u093e\u090f\u0901 \u092a\u094d\u0930\u0926\u093e\u0928 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964"
+        "subcategory": "application",
+        "question": "क्या आप वीज़ा आवेदन में मदद करते हैं?",
+        "answer": "हाँ, हम संपूर्ण वीज़ा सहायता सेवाएँ प्रदान करते हैं।"
       },
       {
-        "question": "\u092a\u0930\u094d\u092f\u091f\u0915 \u0935\u0940\u091c\u093c\u093e \u0915\u0940 \u092e\u093e\u0928\u094d\u092f\u0924\u093e \u0915\u093f\u0924\u0928\u0940 \u0939\u094b\u0924\u0940 \u0939\u0948?",
-        "answer": "\u0926\u0947\u0936 \u0915\u0947 \u0905\u0928\u0941\u0938\u093e\u0930 \u0905\u0932\u0917-\u0905\u0932\u0917, \u0906\u092e\u0924\u094c\u0930 \u092a\u0930 3 \u092e\u0939\u0940\u0928\u0947 \u0938\u0947 10 \u0935\u0930\u094d\u0937\u0964"
+        "subcategory": "other",
+        "question": "टूरिस्ट वीज़ा की वैधता कितनी होती है?",
+        "answer": "देश के अनुसार, आमतौर पर 3 महीने से 10 साल।"
       },
       {
-        "question": "\u0915\u094d\u092f\u093e \u092e\u0941\u091d\u0947 \u0915\u0928\u0947\u0915\u094d\u091f\u093f\u0902\u0917 \u092b\u094d\u0932\u093e\u0907\u091f\u094d\u0938 \u0915\u0947 \u0932\u093f\u090f \u0935\u0940\u091c\u093c\u093e \u091a\u093e\u0939\u093f\u090f?",
-        "answer": "\u0926\u0947\u0936 \u0914\u0930 \u0939\u0935\u093e\u0908 \u0905\u0921\u094d\u0921\u0947 \u0915\u0947 \u092a\u093e\u0930\u094d\u0938\u093f\u0902\u0917 \u0928\u093f\u092f\u092e\u094b\u0902 \u092a\u0930 \u0928\u093f\u0930\u094d\u092d\u0930 \u0915\u0930\u0924\u093e \u0939\u0948\u0964"
+        "subcategory": "other",
+        "question": "क्या कनेक्टिंग फ्लाइट्स के लिए वीज़ा चाहिए?",
+        "answer": "देश और एयरपोर्ट ट्रांजिट नियमों पर निर्भर करता है।"
+      },
+      {
+        "subcategory": "fees",
+        "question": "वीज़ा शुल्क कितना है?",
+        "answer": "वीज़ा शुल्क देश और प्रकार के अनुसार अलग-अलग होता है।"
+      },
+      {
+        "subcategory": "documents",
+        "question": "क्या वीज़ा के लिए ट्रैवल इंश्योरेंस जरूरी है?",
+        "answer": "कुछ देशों में वीज़ा के लिए ट्रैवल इंश्योरेंस अनिवार्य है।"
       }
     ]
   },
   "packages": {
     "en": [
       {
+        "subcategory": "inclusions",
         "question": "What is included in tour packages?",
         "answer": "Accommodation, transport, some meals, and guided tours."
       },
       {
+        "subcategory": "booking",
         "question": "Can I customize a tour package?",
         "answer": "Yes, we offer customizable packages based on preferences."
       },
       {
+        "subcategory": "other",
         "question": "Do you offer group discounts?",
         "answer": "Yes, special discounts for groups of 6 or more."
       },
       {
+        "subcategory": "inclusions",
         "question": "Are travel insurance included?",
         "answer": "Travel insurance is usually an optional add-on."
       },
       {
+        "subcategory": "cancellation",
         "question": "Can I get a refund if I cancel?",
         "answer": "Refund policies vary by package and cancellation timing."
+      },
+      {
+        "subcategory": "booking",
+        "question": "How do I book a tour package?",
+        "answer": "You can book online or contact our travel experts."
+      },
+      {
+        "subcategory": "cancellation",
+        "question": "What happens if the tour is cancelled by the operator?",
+        "answer": "You will receive a full refund or an alternative option."
       }
     ],
     "hi": [
       {
-        "question": "\u091f\u0942\u0930 \u092a\u0948\u0915\u0947\u091c \u092e\u0947\u0902 \u0915\u094d\u092f\u093e \u0936\u093e\u092e\u093f\u0932 \u0939\u0948?",
-        "answer": "\u0906\u0935\u093e\u0938, \u092a\u0930\u093f\u0935\u0939\u0928, \u0915\u0941\u091b \u092d\u094b\u091c\u0928 \u0914\u0930 \u0917\u093e\u0907\u0921\u0947\u0921 \u091f\u0942\u0930\u0964"
+        "subcategory": "inclusions",
+        "question": "टूर पैकेज में क्या शामिल है?",
+        "answer": "आवास, परिवहन, कुछ भोजन और गाइडेड टूर।"
       },
       {
-        "question": "\u0915\u094d\u092f\u093e \u092e\u0948\u0902 \u091f\u0942\u0930 \u092a\u0948\u0915\u0947\u091c \u0915\u093e\u092e\u093f\u091c\u093c \u0915\u0930 \u0938\u0915\u0924\u093e \u0939\u0942\u0901?",
-        "answer": "\u0939\u093e\u0901, \u0939\u092e \u0906\u092a\u0915\u0940 \u092a\u0938\u0902\u0926 \u0915\u0947 \u0906\u0927\u093e\u0930 \u092a\u0930 \u0905\u0928\u0941\u0915\u0942\u0932\u0928\u0940\u092f \u092a\u0948\u0915\u0947\u091c \u092a\u094d\u0930\u0926\u093e\u0928 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964"
+        "subcategory": "booking",
+        "question": "क्या मैं टूर पैकेज को कस्टमाइज़ कर सकता/सकती हूँ?",
+        "answer": "हाँ, हम आपकी पसंद के अनुसार पैकेज कस्टमाइज़ करते हैं।"
       },
       {
-        "question": "\u0915\u094d\u092f\u093e \u0906\u092a \u0938\u092e\u0942\u0939 \u091b\u0942\u091f \u092a\u094d\u0930\u0926\u093e\u0928 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902?",
-        "answer": "\u0939\u093e\u0901, 6 \u092f\u093e \u0905\u0927\u093f\u0915 \u0932\u094b\u0917\u094b\u0902 \u0915\u0947 \u0938\u092e\u0942\u0939\u094b\u0902 \u0915\u0947 \u0932\u093f\u090f \u0935\u093f\u0936\u0947\u0937 \u091b\u0942\u091f\u0964"
+        "subcategory": "other",
+        "question": "क्या आप ग्रुप डिस्काउंट देते हैं?",
+        "answer": "हाँ, 6 या अधिक लोगों के समूह के लिए विशेष छूट है।"
       },
       {
-        "question": "\u0915\u094d\u092f\u093e \u092f\u093e\u0924\u094d\u0930\u093e \u092c\u0940\u092e\u093e \u0936\u093e\u092e\u093f\u0932 \u0939\u0948?",
-        "answer": "\u092f\u093e\u0924\u094d\u0930\u093e \u092c\u0940\u092e\u093e \u0906\u092e\u0924\u094c\u0930 \u092a\u0930 \u090f\u0915 \u0935\u0948\u0915\u0932\u094d\u092a\u093f\u0915 \u090f\u0921-\u0911\u0928 \u0939\u094b\u0924\u0940 \u0939\u0948\u0964"
+        "subcategory": "inclusions",
+        "question": "क्या ट्रैवल इंश्योरेंस शामिल है?",
+        "answer": "ट्रैवल इंश्योरेंस आमतौर पर वैकल्पिक होता है।"
       },
       {
-        "question": "\u0915\u094d\u092f\u093e \u092e\u0948\u0902 \u0930\u0926\u094d\u0926 \u0915\u0930\u0928\u0947 \u092a\u0930 \u0930\u093f\u092b\u0902\u0921 \u092a\u093e \u0938\u0915\u0924\u093e \u0939\u0942\u0901?",
-        "answer": "\u0930\u093f\u092b\u0902\u0921 \u0928\u0940\u0924\u093f\u092f\u093e\u0901 \u092a\u0948\u0915\u0947\u091c \u0914\u0930 \u0930\u0926\u094d\u0926 \u0915\u0930\u0928\u0947 \u0915\u0947 \u0938\u092e\u092f \u0915\u0947 \u0905\u0928\u0941\u0938\u093e\u0930 \u0905\u0932\u0917-\u0905\u0932\u0917 \u0939\u094b\u0924\u0940 \u0939\u0948\u0902\u0964"
+        "subcategory": "cancellation",
+        "question": "अगर मैं रद्द करूँ तो क्या रिफंड मिलेगा?",
+        "answer": "रिफंड नीति पैकेज और रद्द करने के समय पर निर्भर करती है।"
+      },
+      {
+        "subcategory": "booking",
+        "question": "टूर पैकेज कैसे बुक करें?",
+        "answer": "आप ऑनलाइन बुक कर सकते हैं या हमारे ट्रैवल एक्सपर्ट्स से संपर्क करें।"
+      },
+      {
+        "subcategory": "cancellation",
+        "question": "अगर ऑपरेटर द्वारा टूर रद्द हो जाए तो क्या होगा?",
+        "answer": "आपको पूरा रिफंड या वैकल्पिक विकल्प मिलेगा।"
+      }
+    ]
+  },
+  "buses": {
+    "en": [
+      {
+        "subcategory": "booking",
+        "question": "How can I book a bus ticket?",
+        "answer": "You can book online through our website or app."
+      },
+      {
+        "subcategory": "boarding",
+        "question": "What documents do I need to board a bus?",
+        "answer": "A valid ticket and a government-issued ID."
+      },
+      {
+        "subcategory": "allowances",
+        "question": "How much luggage can I carry on a bus?",
+        "answer": "Usually up to 15kg per passenger."
+      },
+      {
+        "subcategory": "cancellation",
+        "question": "Can I cancel my bus ticket?",
+        "answer": "Yes, cancellation is possible as per the policy."
+      },
+      {
+        "subcategory": "other",
+        "question": "Are sleeper buses available?",
+        "answer": "Yes, sleeper and semi-sleeper buses are available on many routes."
+      }
+    ],
+    "hi": [
+      {
+        "subcategory": "booking",
+        "question": "मैं बस टिकट कैसे बुक कर सकता/सकती हूँ?",
+        "answer": "आप हमारी वेबसाइट या ऐप के माध्यम से ऑनलाइन बुक कर सकते हैं।"
+      },
+      {
+        "subcategory": "boarding",
+        "question": "बस में चढ़ने के लिए कौन से दस्तावेज़ चाहिए?",
+        "answer": "मान्य टिकट और सरकारी आईडी आवश्यक है।"
+      },
+      {
+        "subcategory": "allowances",
+        "question": "बस में कितना सामान ले जा सकते हैं?",
+        "answer": "आमतौर पर प्रति यात्री 15 किलोग्राम तक।"
+      },
+      {
+        "subcategory": "cancellation",
+        "question": "क्या मैं अपनी बस टिकट रद्द कर सकता/सकती हूँ?",
+        "answer": "हाँ, नीति के अनुसार रद्दीकरण संभव है।"
+      },
+      {
+        "subcategory": "other",
+        "question": "क्या स्लीपर बसें उपलब्ध हैं?",
+        "answer": "हाँ, कई मार्गों पर स्लीपर और सेमी-स्लीपर बसें उपलब्ध हैं।"
+      }
+    ]
+  },
+  "cabs": {
+    "en": [
+      {
+        "subcategory": "booking",
+        "question": "How do I book a cab?",
+        "answer": "Use our app or website to book a cab instantly."
+      },
+      {
+        "subcategory": "price",
+        "question": "How are cab fares calculated?",
+        "answer": "Fares are based on distance, time, and demand."
+      },
+      {
+        "subcategory": "allowances",
+        "question": "Is there a luggage limit in cabs?",
+        "answer": "Standard cabs allow 2 bags; larger vehicles can be requested."
+      },
+      {
+        "subcategory": "other",
+        "question": "Can I schedule a cab in advance?",
+        "answer": "Yes, you can schedule rides up to 7 days in advance."
+      }
+    ],
+    "hi": [
+      {
+        "subcategory": "booking",
+        "question": "कैब कैसे बुक करें?",
+        "answer": "हमारे ऐप या वेबसाइट से तुरंत कैब बुक करें।"
+      },
+      {
+        "subcategory": "price",
+        "question": "कैब का किराया कैसे तय होता है?",
+        "answer": "किराया दूरी, समय और डिमांड पर निर्भर करता है।"
+      },
+      {
+        "subcategory": "allowances",
+        "question": "कैब में कितना सामान ले जा सकते हैं?",
+        "answer": "सामान्य कैब में 2 बैग की अनुमति है; बड़े वाहन भी उपलब्ध हैं।"
+      },
+      {
+        "subcategory": "other",
+        "question": "क्या मैं कैब पहले से शेड्यूल कर सकता/सकती हूँ?",
+        "answer": "हाँ, आप 7 दिन पहले तक राइड शेड्यूल कर सकते हैं।"
+      }
+    ]
+  },
+  "car_rentals": {
+    "en": [
+      {
+        "subcategory": "booking",
+        "question": "How do I rent a car?",
+        "answer": "Choose your car and book online or at our office."
+      },
+      {
+        "subcategory": "documents",
+        "question": "What documents are required for car rental?",
+        "answer": "A valid driving license and ID proof are required."
+      },
+      {
+        "subcategory": "price",
+        "question": "Are there any hidden charges?",
+        "answer": "No hidden charges; all fees are shown upfront."
+      },
+      {
+        "subcategory": "other",
+        "question": "Can I return the car to a different city?",
+        "answer": "Yes, one-way rentals are available for select routes."
+      }
+    ],
+    "hi": [
+      {
+        "subcategory": "booking",
+        "question": "कार कैसे किराए पर लें?",
+        "answer": "अपनी पसंद की कार चुनें और ऑनलाइन या हमारे ऑफिस में बुक करें।"
+      },
+      {
+        "subcategory": "documents",
+        "question": "कार रेंटल के लिए कौन से दस्तावेज़ चाहिए?",
+        "answer": "मान्य ड्राइविंग लाइसेंस और आईडी प्रूफ आवश्यक है।"
+      },
+      {
+        "subcategory": "price",
+        "question": "क्या कोई छुपे हुए शुल्क हैं?",
+        "answer": "कोई छुपे शुल्क नहीं; सभी शुल्क पहले से बताए जाते हैं।"
+      },
+      {
+        "subcategory": "other",
+        "question": "क्या मैं कार किसी अन्य शहर में वापस कर सकता/सकती हूँ?",
+        "answer": "हाँ, कुछ रूट्स पर वन-वे रेंटल उपलब्ध है।"
       }
     ]
   }
