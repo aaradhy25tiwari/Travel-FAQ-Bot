@@ -24,10 +24,6 @@ git clone https://github.com/aaradhy25tiwari/Travel-FAQ-Bot.git
 python app.py
 ```
 
-```bash
-git clone https://github.com/aaradhy25tiwari/Titanic-Dataset-Chat-Agent.git
-```
-
 ## Interface
 
 Introduction Page
